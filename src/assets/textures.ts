@@ -10,7 +10,7 @@ const glassTexture = new TextureLoader().load(glassImg.src);
 const grassTexture = new TextureLoader().load(grassImg.src);
 const logTexture = new TextureLoader().load(logImg.src);
 const woodTexture = new TextureLoader().load(woodImg.src);
-const groundTexture = new TextureLoader().load(dirtImg.src);
+const groundTexture = new TextureLoader().load(grassImg.src);
 
 export {
   dirtTexture,
