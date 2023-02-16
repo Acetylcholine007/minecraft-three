@@ -1,11 +1,20 @@
-import { groundTexture } from '@/assets/textures';
 import { usePlane } from '@react-three/cannon';
-import { BufferGeometry, Mesh, NearestFilter, RepeatWrapping } from 'three';
+import { useLoader } from '@react-three/fiber';
+import groundImg from 'public/images/textures/grass.jpg';
+import {
+  BufferGeometry,
+  Mesh,
+  NearestFilter,
+  RepeatWrapping,
+  TextureLoader,
+} from 'three';
 export interface GroundProps {}
 
 const Ground: React.FC<GroundProps> = () => {
+  const groundTexture = useLoader(TextureLoader, groundImg.src);
+
   const [ref] = usePlane(() => ({
-    rotation: [-Math.PI / 4, 0, 0],
+    rotation: [-Math.PI / 2, 0, 0],
     position: [0, 0, 0],
   }));
 
