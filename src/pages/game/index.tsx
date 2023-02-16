@@ -1,5 +1,6 @@
 import Crosshair from '@/components/hud/Crosshair';
 import HotBar from '@/components/hud/HotBar';
+import Menu from '@/components/hud/Menu';
 import BlocksLoader from '@/components/three-components/BlocksLoader';
 import FPV from '@/components/three-components/FPV';
 import Ground from '@/components/three-components/Ground';
@@ -7,7 +8,6 @@ import Player from '@/components/three-components/Player';
 import { Physics } from '@react-three/cannon';
 import { Sky } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
-import { GetServerSideProps } from 'next';
 
 export interface GamePageProps {}
 
@@ -24,18 +24,11 @@ const GamePage: React.FC<GamePageProps> = () => {
           <Ground />
         </Physics>
       </Canvas>
+      <Menu />
       <Crosshair />
       <HotBar />
     </div>
   );
-};
-
-export const getServerSideProps: GetServerSideProps<GamePageProps> = async (
-  context
-) => {
-  return {
-    props: {},
-  };
 };
 
 export default GamePage;

@@ -1,4 +1,5 @@
 import { textureImages } from '@/assets/textures';
+import { getLocalStorage, setLocalStorage } from '@/utils/storageHelpers';
 import { nanoid } from 'nanoid';
 import { create } from 'zustand';
 
@@ -12,11 +13,13 @@ export interface IStore {
   addBlock: (x: number, y: number, z: number) => void;
   removeBlock: (x: number, y: number, z: number) => void;
   setTexture: (texture: keyof typeof textureImages) => void;
+  saveWorld: () => void;
+  resetWorld: () => void;
 }
 
 const useStore = create<IStore>((set) => ({
   texture: 'dirt',
-  blocks: [],
+  blocks: getLocalStorage('blocks') ?? [],
   addBlock: (x, y, z) => {
     set((prev) => ({
       blocks: [
@@ -38,8 +41,17 @@ const useStore = create<IStore>((set) => ({
   setTexture: (texture) => {
     set(() => ({ texture }));
   },
-  saveWorld: () => {},
-  resetWorld: () => {},
+  saveWorld: () => {
+    set((prev) => {
+      setLocalStorage('blocks', prev.blocks);
+      return prev;
+    });
+  },
+  resetWorld: () => {
+    set(() => ({
+      blocks: [],
+    }));
+  },
 }));
 
 export default useStore;
