@@ -7,10 +7,10 @@ import { NearestFilter, TextureLoader } from 'three';
 
 export const textureImages = {
   dirt: dirtImg,
-  glass: glassImg,
   grass: grassImg,
-  log: logImg,
+  glass: glassImg,
   wood: woodImg,
+  log: logImg,
   ground: grassImg,
 };
 

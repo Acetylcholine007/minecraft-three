@@ -11,12 +11,13 @@ export interface IStore {
   }[];
   addBlock: (x: number, y: number, z: number) => void;
   removeBlock: (x: number, y: number, z: number) => void;
+  setTexture: (texture: keyof typeof textureImages) => void;
 }
 
 const useStore = create<IStore>((set) => ({
   texture: 'dirt',
   blocks: [],
-  addBlock: (x: number, y: number, z: number) => {
+  addBlock: (x, y, z) => {
     set((prev) => ({
       blocks: [
         ...prev.blocks,
@@ -24,7 +25,7 @@ const useStore = create<IStore>((set) => ({
       ],
     }));
   },
-  removeBlock: (x: number, y: number, z: number) => {
+  removeBlock: (x, y, z) => {
     set((prev) => ({
       blocks: [
         ...prev.blocks.filter(
@@ -34,7 +35,9 @@ const useStore = create<IStore>((set) => ({
       ],
     }));
   },
-  setTexture: () => {},
+  setTexture: (texture) => {
+    set(() => ({ texture }));
+  },
   saveWorld: () => {},
   resetWorld: () => {},
 }));

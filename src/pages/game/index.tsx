@@ -1,3 +1,5 @@
+import Crosshair from '@/components/hud/Crosshair';
+import HotBar from '@/components/hud/HotBar';
 import BlocksLoader from '@/components/three-components/BlocksLoader';
 import FPV from '@/components/three-components/FPV';
 import Ground from '@/components/three-components/Ground';
@@ -22,9 +24,8 @@ const GamePage: React.FC<GamePageProps> = () => {
           <Ground />
         </Physics>
       </Canvas>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-        +
-      </div>
+      <Crosshair />
+      <HotBar />
     </div>
   );
 };
