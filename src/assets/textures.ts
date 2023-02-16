@@ -1,22 +1,22 @@
-import dirtImg from 'public/images/textures/dirt.jpg';
+import dirtImg from 'public/images/textures/dirt.png';
 import glassImg from 'public/images/textures/glass.png';
-import grassImg from 'public/images/textures/grass.jpg';
-import logImg from 'public/images/textures/log.jpg';
+import grassImg from 'public/images/textures/grass.png';
+import logImg from 'public/images/textures/log.png';
 import woodImg from 'public/images/textures/wood.png';
-import { TextureLoader } from 'three';
+import { NearestFilter, TextureLoader } from 'three';
 
-const dirtTexture = new TextureLoader().load(dirtImg.src);
-const glassTexture = new TextureLoader().load(glassImg.src);
-const grassTexture = new TextureLoader().load(grassImg.src);
-const logTexture = new TextureLoader().load(logImg.src);
-const woodTexture = new TextureLoader().load(woodImg.src);
-const groundTexture = new TextureLoader().load(grassImg.src);
+export const textureImages = {
+  dirt: dirtImg,
+  glass: glassImg,
+  grass: grassImg,
+  log: logImg,
+  wood: woodImg,
+  ground: grassImg,
+};
 
-export {
-  dirtTexture,
-  glassTexture,
-  grassTexture,
-  logTexture,
-  woodTexture,
-  groundTexture,
+export const textureSelector = (textureName: keyof typeof textureImages) => {
+  const texture = new TextureLoader().load(textureImages[textureName].src);
+  texture.magFilter = NearestFilter;
+
+  return texture;
 };

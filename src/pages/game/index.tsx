@@ -1,3 +1,4 @@
+import BlocksLoader from '@/components/three-components/BlocksLoader';
 import FPV from '@/components/three-components/FPV';
 import Ground from '@/components/three-components/Ground';
 import Player from '@/components/three-components/Player';
@@ -17,6 +18,7 @@ const GamePage: React.FC<GamePageProps> = () => {
         <FPV />
         <Physics>
           <Player />
+          <BlocksLoader />
           <Ground />
         </Physics>
       </Canvas>
