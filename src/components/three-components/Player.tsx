@@ -1,3 +1,4 @@
+import useKeyboard from '@/hooks/useKeyboard';
 import { useSphere } from '@react-three/cannon';
 import { useFrame, useThree } from '@react-three/fiber';
 import { useEffect, useRef } from 'react';
@@ -6,6 +7,8 @@ import { BufferGeometry, Mesh, Vector3 } from 'three';
 export interface PlayerProps {}
 
 const Player: React.FC<PlayerProps> = () => {
+  const actions = useKeyboard();
+
   const { camera } = useThree();
   const [ref, api] = useSphere(() => ({
     mass: 1,
